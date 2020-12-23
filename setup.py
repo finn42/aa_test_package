@@ -5,14 +5,14 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="aa_test_package", # Replace with your own username
-    version="0.0.3",
+    version="0.0.5",
     author="Finn Upham",
     author_email="finn.upham@gmail.com",
     description="A tess package for activity analysis",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/finn42/aa_test_package.git",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(include=['activityanalysis', 'activityanalysis.*']),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
