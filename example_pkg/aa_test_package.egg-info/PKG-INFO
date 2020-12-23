@@ -13,8 +13,8 @@ Description: # Example Activity Analysis file
         You can use [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/) to write your content.
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
-Classifier: Intended Audience :: Audience Analysis
-Classifier: Topic :: Statistics :: Time Series Collections
+Classifier: Intended Audience :: Science/Research
+Classifier: Topic :: Scientific/Engineering :: Mathematics
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
