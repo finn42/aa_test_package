@@ -115,11 +115,11 @@ def equisplit(counts,nBins,minim = 5):
     for i in range(len(cuts)-1):
         dists.append(counts.loc[cuts[i]:cuts[i+1]-1].sum())
     if np.min(dists)<minim:
-        print('Too many bins')
+        print('Reducing number of bins.')
         if nBins>2:
             cuts = equisplit(counts,nBins-1)
         else:
-            print('Not enough samples to cut for GoF test.')
+            print('Not enough samples for test.')
     return cuts
 
 def simpleActivityTest(A,Np,Nbins):
@@ -194,13 +194,13 @@ def coordScoreSimple(Data,FrameSize,Thresh,actType,Nbins):
     return C
 
 
-def alternatingActivitiesTest(Acts1,Acts2,Nbins = 3): 
-    '''alternatingActivitiesTest(Acts1,Acts2,Nbins = 3)
+def alternatingActivitiesTest(Acts1,Acts2,nBins = 3): 
+    '''alternatingActivitiesTest(Acts1,Acts2,nBins = 3)
         function to run a goodness of fit test looking at the independence of two exclusive forms of activity occuring in the same collection of responses, such as 'Inc' and 'Dec' in ratings.
         
         Input: Acts1 - Action point processes for action type 1 on response collection (output of actionCount)
                Acts2 - Action point processes for action type 2 on same response collection
-               Nbins - number of bins to use per dimension of the contingency table test. Is reduced if necessary.
+               nBins - number of bins to use per dimension of the contingency table test. Is reduced if necessary.
 
         Ouput: stest = {'Chi2':st,'pvalue':p,'Model':Model,'Measured':Measured,'BinsModel':tabMod,'BinsMeasured':tabMea}
             Chi2 - chisquare statistic on the contingency table test
@@ -258,8 +258,8 @@ def alternatingActivitiesTest(Acts1,Acts2,Nbins = 3):
                     idx = int(Np*(r)/(s+1))
                 subcount[idx] = sub.loc[r]
         Measured[s] = subcount
-    cuts1 = equisplit(Independent,Nbins ,Nbins*6);
-    cuts2 = equisplit(MeasuredAll['Measured'],Nbins ,Nbins*6);
+    cuts1 = equisplit(Independent,nBins ,nBins*6);
+    cuts2 = equisplit(MeasuredAll['Measured'],nBins ,nBins*6);
     tabMod = pd.DataFrame()
     tabMea = pd.DataFrame()
     for j in range(len(cuts2)-1):
@@ -298,7 +298,7 @@ def coordScoreAlternating(Data,FrameSize,Thresh1,actType1,Thresh2,actType2,Nbins
     for i in range(winSize):
         Acts1 = activityCount(Data.loc[i:],FrameSize,FrameSize,Thresh1,actType1)
         Acts2 = activityCount(Data.loc[i:],FrameSize,FrameSize,Thresh2,actType2)
-        stest = alternatingActivitiesTest(Acts1,Acts2,nBins = Nbins)
+        stest = alternatingActivitiesTest(Acts1,Acts2,Nbins)
         CS.append(stest['pvalue'])
     C=score_C(np.array(CS))
     return C

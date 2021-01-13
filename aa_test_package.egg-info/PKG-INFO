@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: aa-test-package
-Version: 0.0.5
-Summary: A tess package for activity analysis
+Version: 0.0.8
+Summary: A test package for activity analysis
 Home-page: https://github.com/finn42/aa_test_package.git
 Author: Finn Upham
 Author-email: finn.upham@gmail.com

@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="aa_test_package", # Replace with your own username
-    version="0.0.5",
+    version="0.0.8",
     author="Finn Upham",
     author_email="finn.upham@gmail.com",
     description="A test package for activity analysis",
