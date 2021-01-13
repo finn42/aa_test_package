@@ -4,4 +4,4 @@ aa_test_package.egg-info/PKG-INFO
 aa_test_package.egg-info/SOURCES.txt
 aa_test_package.egg-info/dependency_links.txt
 aa_test_package.egg-info/top_level.txt
-activityanalysis/__init__.py
+activityanalysis_test/__init__.py

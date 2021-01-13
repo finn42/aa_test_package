@@ -8,11 +8,11 @@ setuptools.setup(
     version="0.0.5",
     author="Finn Upham",
     author_email="finn.upham@gmail.com",
-    description="A tess package for activity analysis",
+    description="A test package for activity analysis",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/finn42/aa_test_package.git",
-    packages=setuptools.find_packages(include=['activityanalysis', 'activityanalysis.*']),
+    packages=setuptools.find_packages(include=['activityanalysis_test', 'activityanalysis_test.*']),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Science/Research",
