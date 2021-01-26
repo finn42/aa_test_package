@@ -410,11 +410,12 @@ def localActivityTest(AllC,FrameSize,ShuffleRange,Iter=1000,alpha=0.01):
         Iter - number of iterations of shuffled responses used to generate alternative distributions (Monte Carlo sampling)
         alpha is the threshold on local activity extremes, for non-parametric pvalues 1>alpha>0
         
-        Output: stest = {'pvalue':p,'MeasuredResults':Results,'Models':AlternativeCoincs,'CoordScore':CS}
+        Output: stest = {'pvalue':p,'MeasuredResults':Results,'Models':AlternativeCoincs,'CoordScore':CS,'ActivityPeaks':extremeCoins}
             pvalue - rank proximity of measured activity levels to average shuffled alternatives, min 1/Iter
             MeasuredResults: dataframe of 'Activity-levels', 'Local_p', and related 'Surprise'
             Models: Dataframe of alternative activity-levels, with Iter columns
             CS: Coordination score based on the pvalue.
+            ActivityPeaks: dataframe of timepoints and activity levels when local activity levels are statistically extreme (outside of alpha)
             
     TODO evaluate distributions on local rank rather than absolute counts
     '''
