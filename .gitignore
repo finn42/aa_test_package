@@ -1,0 +1,8 @@
+.DS_Store
+.pypirc
+
+activityanalysis_test/.DS_Store
+build/.DS_Store
+build/lib/activityanalysis_test/
+
+dist/
