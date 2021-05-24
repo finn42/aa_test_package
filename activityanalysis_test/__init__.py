@@ -160,15 +160,16 @@ def simpleActivityTest(A,Np,Nbins):
     return stest
 
 
-def score_C(pvals):
-    ''' score_C(pvals)
+def score_C(pvals, max_C = 16):
+    ''' score_C(pvals, max_C = 16)
     Converts an array of pvalues from a sequence of activity tests to an average coordination score
     The score represents the concentration of evidence of coodination across responses. Used specifically for coordScore* functions, to agreggate results over different offsets of frames to samples in evaluated time series.
     Input: pvals - a list or array of p-values [0,1] from inferential tests
+           max_C - the precision limit on p, log10, default 16 for parametric tests. input log10(Iterations) for monte carlo sims
     Output: C - value from [0,16], with 2 equivalent to pval<=0.01. 
     '''
     # pval must be an np.array
-    C =  -np.log10(pvals+10.0**(-16)).mean() 
+    C =  -np.log10(pvals+10.0**(-max_C)).mean() 
     return C
 
 def coordScoreSimple(Data,FrameSize,Thresh,actType,Nbins):
@@ -466,7 +467,7 @@ def localActivityTest(AllC,FrameSize,ShuffleRange,Iter=1000,alpha=0.01):
     distanceTrueMean = (cdistf.add(-meanAltCDistf,0)**2).sum()**(0.5)
     distanceMAlt = (ACdistf.add(-meanAltCDistf,0)**2).sum()**(0.5)
     p = len(distanceMAlt[distanceMAlt>distanceTrueMean.values[0]])/Iter
-    CS = score_C(p)
+    CS = score_C(p,np.log10(Iter))
 
     #capture distibutions per frame for local activity stats
     AltFrameCounts = pd.DataFrame(0,index=AlternativeCoincs.index,columns=aL)
